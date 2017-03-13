@@ -1,0 +1,70 @@
+{\rtf1\ansi\ansicpg936\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red100\green56\blue32;\red92\green38\blue153;\red170\green13\blue145;
+\red63\green110\blue116;\red46\green13\blue110;\red196\green26\blue22;\red28\green0\blue207;\red38\green71\blue75;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab692
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 \CocoaLigature0 \'b5\'f7\'d3\'c3
+\f1 \
+#pragma mark - 
+\f0 \'b4\'b4\'bd\'a8\'bb\'ac\'b3\'df
+\f1 \
+\cf0 - (\cf3 UIView\cf0  *)createScaleRuleContentView\
+\{\
+    \cf4 if\cf0  (\cf5 _borrowScopeContentView\cf0 ) \{\
+        [\cf5 _borrowScopeContentView\cf0  \cf6 removeFromSuperview\cf0 ];\
+        \cf5 _borrowScopeContentView\cf0  = \cf4 nil\cf0 ;\
+    \}\
+    \cf5 _borrowScopeContentView\cf0  = [[\cf3 UIView\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+    \
+    \cf5 _borrowScopeLabel\cf0  = [[\cf3 UILabel\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+    \cf5 _borrowScopeLabel\cf0 .\cf3 text\cf0  = \cf7 @"
+\f0 \'c9\'ea\'c7\'eb\'bd\'e8\'bf\'ee\'bd\'f0\'b6\'ee\'a3\'a8
+\f1 1\'9720
+\f0 \'cd\'f2\'d4\'aa
+\f1 )"\cf0 ;\
+    \cf5 _borrowScopeLabel\cf0 .\cf3 font\cf0  = [\cf3 UIFont\cf0  \cf6 systemFontOfSize\cf0 :\cf8 13\cf0 ];\
+    \cf5 _borrowScopeLabel\cf0 .\cf3 textAlignment\cf0  = \cf6 NSTextAlignmentCenter\cf0 ;\
+    \cf5 _borrowScopeLabel\cf0 .\cf3 textColor\cf0  = \cf2 UIColorFromRGB\cf0 (\cf8 0x888888\cf0 );\
+    [\cf5 _borrowScopeContentView\cf0  \cf6 addSubview\cf0 :\cf5 _borrowScopeLabel\cf0 ];\
+    \
+    \cf2 WS\cf0 (weakself);\
+    [\cf5 _borrowScopeLabel\cf0  \cf9 mas_makeConstraints\cf0 :^(\cf5 MASConstraintMaker\cf0  *make) \{\
+        make.\cf5 top\cf0 .\cf9 equalTo\cf0 (weakself.\cf5 borrowScopeContentView\cf0 .\cf5 mas_top\cf0 ).\cf9 offset\cf0 (\cf8 16\cf0 );\
+        make.\cf5 left\cf0 .\cf9 right\cf0 .\cf9 equalTo\cf0 (weakself.\cf5 borrowScopeContentView\cf0 );\
+        make.\cf5 height\cf0 .\cf2 mas_offset\cf0 (\cf8 13\cf0 );\
+    \}];\
+    \
+    \cf5 _maxBorrowLabel\cf0  = [[\cf3 UILabel\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+    \cf5 _maxBorrowLabel\cf0 .\cf3 text\cf0  = \cf7 @"
+\f0 \'b5\'a5\'b1\'ca\'d7\'ee\'b8\'df
+\f1 20
+\f0 \'cd\'f2
+\f1 "\cf0 ;\
+    \cf5 _maxBorrowLabel\cf0 .\cf3 hidden\cf0  = \cf4 YES\cf0 ;\
+    \cf5 _maxBorrowLabel\cf0 .\cf3 font\cf0  = [\cf3 UIFont\cf0  \cf6 systemFontOfSize\cf0 :\cf8 10\cf0 ];\
+    \cf5 _maxBorrowLabel\cf0 .\cf3 textAlignment\cf0  = \cf6 NSTextAlignmentCenter\cf0 ;\
+    \cf5 _maxBorrowLabel\cf0 .\cf3 textColor\cf0  = \cf2 UIColorFromRGB\cf0 (\cf8 0xff9900\cf0 );\
+    [\cf5 _borrowScopeContentView\cf0  \cf6 addSubview\cf0 :\cf5 _maxBorrowLabel\cf0 ];\
+    \
+    [\cf5 _maxBorrowLabel\cf0  \cf9 mas_makeConstraints\cf0 :^(\cf5 MASConstraintMaker\cf0  *make) \{\
+        make.\cf5 top\cf0 .\cf9 equalTo\cf0 (weakself.\cf5 borrowScopeLabel\cf0 .\cf5 mas_bottom\cf0 ).\cf9 offset\cf0 (\cf8 7\cf0 );\
+        make.\cf5 left\cf0 .\cf9 right\cf0 .\cf9 equalTo\cf0 (weakself.\cf5 borrowScopeContentView\cf0 );\
+        make.\cf5 height\cf0 .\cf2 mas_offset\cf0 (\cf8 10\cf0 );\
+    \}];\
+    \
+    \cf5 _scrollSlider\cf0   = [[\cf5 ZVScrollSlider\cf0  \cf6 alloc\cf0 ]\cf9 initWithFrame\cf0 :\cf6 CGRectMake\cf0 (\cf8 0\cf0 , \cf8 0\cf0 , \cf4 self\cf0 .\cf3 bounds\cf0 .\cf3 size\cf0 .\cf3 width\cf0 , \cf8 84\cf0 ) \cf9 minNum\cf0 :\cf8 10000\cf0  \cf9 maxNum\cf0 :\cf8 200000\cf0  \cf9 rulerCount\cf0 :\cf8 1900\cf0  \cf9 average\cf0 :\cf8 100\cf0  \cf9 rulerValue\cf0 :\cf8 50000\cf0 ];\
+    \cf5 _scrollSlider\cf0 .\cf5 delegate\cf0  = \cf4 self\cf0 ;\
+    [\cf5 _borrowScopeContentView\cf0  \cf6 addSubview\cf0 :\cf5 _scrollSlider\cf0 ];\
+    \
+    [\cf5 _scrollSlider\cf0  \cf9 mas_makeConstraints\cf0 :^(\cf5 MASConstraintMaker\cf0  *make) \{\
+        make.\cf5 top\cf0 .\cf9 equalTo\cf0 (weakself.\cf5 maxBorrowLabel\cf0 .\cf5 mas_bottom\cf0 ).\cf9 offset\cf0 (\cf8 4\cf0 );\
+        make.\cf5 left\cf0 .\cf9 right\cf0 .\cf9 equalTo\cf0 (weakself.\cf5 borrowScopeContentView\cf0 );\
+        make.\cf5 height\cf0 .\cf2 mas_offset\cf0 (\cf8 92\cf0 );\
+    \}];\
+    \cf4 return\cf0  \cf5 _borrowScopeContentView\cf0 ;\
+\}\
+}
